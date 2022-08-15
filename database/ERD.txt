@@ -1,0 +1,38 @@
+station_data
+-
+station_id varchar FK >- stations.station_id
+metric varchar
+value float
+year int
+month int
+day int 
+date date 
+
+stations
+-
+station_id varchar pk
+latitude float
+Longitude flaot
+elevation float
+state_code varchar FK >- states.state_code
+station_name varchar
+
+states
+-
+state_code varchar pk
+state_name varchar
+
+state_based_metrics
+-
+id int pk
+state_code varchar FK >- states.state_code
+year int
+month int
+day int
+station_id varchar FK >- stations.station_id
+metric varchar
+value float
+latitude float
+longitude float 
+elevation float 
+station_name varchar
