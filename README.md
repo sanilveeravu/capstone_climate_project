@@ -32,7 +32,7 @@ Using the NCEI data browsed through all the years and collected the required dat
 ### Database
 
 Initial DB Design is built based on climate Data as below:
-![EDG_image](database/EDG_image.png)
+![EDG_image](database/EDG_image.PNG)
 
 ### Machine Learning
 
