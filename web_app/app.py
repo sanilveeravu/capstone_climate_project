@@ -1,5 +1,5 @@
 from flask import Flask, render_template, redirect, request, jsonify
-#from modelHelper import ModelHelper
+from gbrModelHelper import GBRModelHelper
 
 # Create an instance of Flask
 app = Flask(__name__)
@@ -42,6 +42,23 @@ def database():
 def machine_learning():
     # Return template and data
     return render_template("machine_learning.html")
+
+
+@app.route("/makePredictions", methods=["POST"])
+def makePredictions():
+    # Return template and data
+    content = request.json["data"]
+    print(content)
+    
+    # parse
+    metric = str(content["metric"])
+    state_code = str(content["state_code"])
+    year = int(content["year"])
+    month = int(content["month"])
+    day = int(content["day"])
+
+    preds = GBRModelHelper.makePredictions(metric, state_code, year, month, day)
+    return(jsonify({"ok": True, "prediction": str(preds)}))
 
 # @app.route("/tableau")
 # def tableau():
