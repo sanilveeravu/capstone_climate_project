@@ -75,12 +75,32 @@ input, select, textarea {
 input[type="date"] { 
 	background: transparent;
 	color: white;
+	background-size: 1.25rem;
+	background-repeat: no-repeat;
+	background-position: calc(100% - 1rem) center;
+	height: 2.75em;
+	padding-right: 2.75em;
+	text-overflow: ellipsis;
+	-moz-appearance: none;
+	-webkit-appearance: none;
+	-ms-appearance: none;
+	appearance: none;
+	background: rgba(255, 255, 255, 0.025);
+	border-radius: 5px;
+	border: none;
+	border: solid 2px rgba(255, 255, 255, 0.125);
+	color: inherit;
+	display: block;
+	outline: 0;
+	padding: 0 1em;
+	text-decoration: none;
+	width: 100%;
   }
   
   input[type="date"]::-webkit-calendar-picker-indicator {
 	filter: invert(100%);
   }
-  
+
 /* Basic */
 
 	@-ms-viewport {

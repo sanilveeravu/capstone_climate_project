@@ -1,6 +1,11 @@
 $(document).ready(function() {
     console.log("Page Loaded");
 
+    var field = document.querySelector('#select_date');
+    var curr_date = new Date();
+    field.value = curr_date.getFullYear().toString() + '-' + (curr_date.getMonth() + 1).toString().padStart(2, 0) +
+    '-' + curr_date.getDate().toString().padStart(2, 0);
+
     var select_state = document.getElementById("state_code");
     
     $.ajax({
@@ -75,8 +80,9 @@ function makePredictions() {
             console.log(returnedData);
 
             predicted_value = returnedData["prediction"]
+            actual_value = returnedData["actual"]
 
-            $("#output").text(predicted_value);
+            $("#output").text("Actual: " + actual_value + "     ,     Predicted: " + predicted_value)
 
         },
         error: function(XMLHttpRequest, textStatus, errorThrown) {

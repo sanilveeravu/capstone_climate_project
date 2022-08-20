@@ -62,8 +62,10 @@ def makePredictions():
     month = int(content["month"])
     day = int(content["day"])
 
-    preds = GBRModelHelper.makePredictions(metric, state_code, year, month, day)
-    return(jsonify({"ok": True, "prediction": str(preds)}))
+    act_pred = GBRModelHelper.makePredictions(metric, state_code, year, month, day)
+    actual = act_pred[0]
+    preds = act_pred[1]
+    return(jsonify({"ok": True, "actual": str(actual), "prediction": str(preds)}))
 
 # @app.route("/tableau")
 # def tableau():
