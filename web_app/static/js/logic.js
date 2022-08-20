@@ -75,8 +75,9 @@ function makePredictions() {
             console.log(returnedData);
 
             predicted_value = returnedData["prediction"]
+            actual_value = returnedData["actual"]
 
-            $("#output").text(predicted_value);
+            $("#output").text("Actual: " + actual_value + "     ,     Predicted: " + predicted_value)
 
         },
         error: function(XMLHttpRequest, textStatus, errorThrown) {
