@@ -1,5 +1,6 @@
 from flask import Flask, render_template, redirect, request, jsonify
 from gbrModelHelper import GBRModelHelper
+import pandas as pd
 
 # Create an instance of Flask
 app = Flask(__name__)
@@ -43,6 +44,10 @@ def machine_learning():
     # Return template and data
     return render_template("machine_learning.html")
 
+@app.route("/get_states")
+def get_states():
+  states_df = pd.read_csv("../data/lookup_data/states.csv",index_col="state_code")
+  return states_df.to_json()
 
 @app.route("/makePredictions", methods=["POST"])
 def makePredictions():
