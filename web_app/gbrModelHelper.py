@@ -31,7 +31,7 @@ class GBRModelHelper():
             print("test")
             print(df.info)
             dt = datetime.datetime(year, month, day)
-            df = df.loc[(df['state_code'] == 'MN') & (df['date'] == dt.strftime("%Y-%m-%d"))]
+            df = df.loc[(df['state_code'] == state_code) & (df['date'] == dt.strftime("%Y-%m-%d"))]
             if(len(df)==1):
                 actual_value=df['value'].iloc[0]
             return actual_value    
