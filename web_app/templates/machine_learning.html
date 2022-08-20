@@ -5,9 +5,21 @@
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
 <html>
+
+
+
 	<head>
+		<meta charset="utf-8">
 		<title>Machine Learning</title>
-		<meta charset="utf-8" />
+		<!-- Boostrap -->
+		<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/minty/bootstrap.min.css"> -->
+		<!-- Our CSS -->
+		<!-- <link rel="stylesheet" type="text/css" href="static/css/style.css"> -->
+		<!-- JQuery -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<!-- JS -->
+		<script type="text/javascript" src="static/js/logic.js"></script>
+
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="../static/css/main.css" />
 		<noscript><link rel="stylesheet" href="../static/css/noscript.css" /></noscript>
@@ -47,76 +59,94 @@
 						<header>
 							<div class="inner">
 								<h2>Machine Learning</h2>
-								<p>Phasellus non pulvinar erat. Fusce tincidunt nisl eget ipsum.</p>
 							</div>
 						</header>
 
 						<!-- Content -->
 							<div class="wrapper">
-								<div class="inner">
 
-									<h3 class="major">Lorem ipsum dolor</h3>
-									<p>Morbi mattis mi consectetur tortor elementum, varius pellentesque velit convallis. Aenean tincidunt lectus auctor mauris maximus, ac scelerisque ipsum tempor. Duis vulputate ex et ex tincidunt, quis lacinia velit aliquet. Duis non efficitur nisi, id malesuada justo. Maecenas sagittis felis ac sagittis semper. Curabitur purus leo donec vel dolor at arcu tincidunt bibendum. Interdum et malesuada fames ac ante ipsum primis in faucibus. Fusce ut aliquet justo. Donec id neque ipsum. Integer eget ultricies odio. Nam vel ex a orci fringilla tincidunt. Aliquam eleifend ligula non velit accumsan cursus. Etiam ut gravida sapien.</p>
+								<div class="container">
+									<div class="card border-primary mb-3" style="max-width: 20rem;">
+										<div class="card-header">Filters</div>
+										<div class="card-body">
+											<div class="row">
+												<div class="col-md-6">
+													<div class="form-group">
+														<label class="col-form-label" for="metric">Metric</label>
+														<select id="metric">
+															<option value="TMAX">TMAX</option>
+															<option value="TMIN">TMIN</option>
+															<option value="PRCP">PRCP</option>
+															<option value="TMIN">SNOW</option>
+														</select>
+													</div>
 
-									<p>Vestibulum ultrices risus velit, sit amet blandit massa auctor sit amet. Sed eu lectus sem. Phasellus in odio at ipsum porttitor mollis id vel diam. Praesent sit amet posuere risus, eu faucibus lectus. Vivamus ex ligula, tempus pulvinar ipsum in, auctor porta quam. Proin nec commodo, vel scelerisque nisi scelerisque. Suspendisse id quam vel tortor tincidunt suscipit. Nullam auctor orci eu dolor consectetur, interdum ullamcorper ante tincidunt. Mauris felis nec felis elementum varius.</p>
+													<div class="form-group">
+														<label class="col-form-label" for="state_code">State Code</label>
+														<select id="state_code">
+															<option value="MN">MN</option>
+															<option value="MN">TX</option>
+															<option value="MN">AL</option>
+															<option value="MN">IL</option>
+														</select>
+													</div>
 
-									<h3 class="major">Vitae phasellus</h3>
-									<p>Cras mattis ante fermentum, malesuada neque vitae, eleifend erat. Phasellus non pulvinar erat. Fusce tincidunt, nisl eget mattis egestas, purus ipsum consequat orci, sit amet lobortis lorem lacus in tellus. Sed ac elementum arcu. Quisque placerat auctor laoreet.</p>
-								</br>
-							</br>
-									<section class="features">
-										<h4>Alternate</h4>
-										<div class="table-wrapper">
-											<table class="alt">
-												<thead>
-													<tr>
-														<th>Name</th>
-														<th>Description</th>
-														<th>Price</th>
-													</tr>
-												</thead>
-												<tbody>
-													<tr>
-														<td>Item One</td>
-														<td>Ante turpis integer aliquet porttitor.</td>
-														<td>29.99</td>
-													</tr>
-													<tr>
-														<td>Item Two</td>
-														<td>Vis ac commodo adipiscing arcu aliquet.</td>
-														<td>19.99</td>
-													</tr>
-													<tr>
-														<td>Item Three</td>
-														<td> Morbi faucibus arcu accumsan lorem.</td>
-														<td>29.99</td>
-													</tr>
-													<tr>
-														<td>Item Four</td>
-														<td>Vitae integer tempus condimentum.</td>
-														<td>19.99</td>
-													</tr>
-													<tr>
-														<td>Item Five</td>
-														<td>Ante turpis integer aliquet porttitor.</td>
-														<td>29.99</td>
-													</tr>
-												</tbody>
-												<tfoot>
-													<tr>
-														<td colspan="2"></td>
-														<td>100.00</td>
-													</tr>
-												</tfoot>
-											</table>
+													<div class="form-group">
+														<label class="col-form-label" for="year">Year</label>
+														<input type="text" class="form-control" value="2022" id="year">
+													</div>
+													
+													<div class="form-group">
+														<label class="col-form-label" for="month">Month</label>
+														<input type="text" class="form-control" value="7" id="month">
+													</div>
+
+													<div class="form-group">
+														<label class="col-form-label" for="day">Day</label>
+														<input type="text" class="form-control" value="1" id="day">
+													</div>
+
+												</div>
+												<!-- <div class="col-md-6">
+													<div class="form-group">
+														<label class="col-form-label" for="familySize">Family Size</label>
+														<input type="text" class="form-control" value="2" id="familySize">
+													</div>
+													<div class="form-group">
+														<label class="col-form-label" for="pclass">Passenger Class</label>
+														<select id="pclass">
+															<option value="1">First Class</option>
+															<option value="2">Second Class</option>
+															<option value="3">Third Class</option>
+														</select>
+													</div>
+													<div class="form-group">
+														<label class="col-form-label" for="embarked">Embarked Port</label>
+														<select id="embarked">
+															<option value="C">Cherbourg</option>
+															<option value="Q">Queenstown</option>
+															<option value="S">Southampton</option>
+														</select>
+													</div>
+												</div> -->
+											</div>
+											<div class="row">
+												<div class="col-md-12">
+													<button type="button" class="btn btn-primary" id="filter">Make Prediction!</button>
+												</div>
+											</div>
 										</div>
-									</section>
-
+									</div>
 								</div>
-							</div>
-									</section>
-
+								<hr style="color:lightgray; border-width: 3px;">
+								<div class="container-fluid">
+									<div class="row">
+										<div class="col-md-12">
+											<h1 id="output"></h1>
+										</div>
+									</div>
 								</div>
+
 							</div>
 
 					</section>
