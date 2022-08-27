@@ -1,12 +1,15 @@
 from flask import Flask, render_template, redirect, request, jsonify
 from gbrModelHelper import GBRModelHelper
 import pandas as pd
+from sqlHelper import SQLHelper
+import json
 
 # Create an instance of Flask
 app = Flask(__name__)
 app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
 
 #modelHelper = ModelHelper()
+sqlHelper = SQLHelper()
 
 # Route to render index.html template using data from Mongo
 @app.route("/")
@@ -87,6 +90,22 @@ def makePredictions():
 
 #     preds = modelHelper.makePredictions(sex_flag, age, fare, familySize, p_class, embarked)
 #     return(jsonify({"ok": True, "prediction": str(preds)}))
+
+
+@app.route("/getSQL", methods=["POST"])
+def get_sql():
+    content = request.json["data"]
+    print(content)
+    
+    # parse
+    metric = content["metric"]
+    state_code = content["state_code"]
+    min_date = content["min_date"]
+    max_date = content["max_date"]
+    df = sqlHelper.getDataFromDatabase(metric, state_code, min_date, max_date)
+    return(jsonify(json.loads(df.to_json(orient="records"))))
+
+
 
 
 #############################################################
