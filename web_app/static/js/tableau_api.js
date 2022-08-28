@@ -1,7 +1,15 @@
 var viz;
 
 $(document).ready(function() {
-    initializeViz();
+    
+    var url = ""
+    if (document.URL.slice(-3) == "one") {
+        url = "https://public.tableau.com/views/FinalProject7_16613026204870/Dashboard1?:language=en-US&:display_count=n&:origin=viz_share_link";
+      } else {
+        url = "https://public.tableau.com/views/FinalProject7_2/Dashboard2?:language=en-US&publish=yes&:display_count=n&:origin=viz_share_link";
+      }
+    
+    initializeViz(url);
 
     $("#pdf").click(function() {
         exportPDF();
@@ -20,9 +28,9 @@ $(document).ready(function() {
     });
 });
 
-function initializeViz() {
+function initializeViz(url) {
     var placeholderDiv = document.getElementById("tableauViz");
-    var url = "https://public.tableau.com/views/FinalProject7_16613026204870/Dashboard1?:language=en-US&:display_count=n&:origin=viz_share_link";
+    // var url = "https://public.tableau.com/views/FinalProject7_16613026204870/Dashboard1?:language=en-US&:display_count=n&:origin=viz_share_link";
     // https://public.tableau.com/views/Snowfall_16608483903850/Snow?:language=en-US&:display_count=n&:origin=viz_share_link <-- Amer's Dashboard link
     var options = {
         width: placeholderDiv.offsetWidth,
