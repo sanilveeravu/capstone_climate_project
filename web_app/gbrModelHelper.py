@@ -15,7 +15,7 @@ class GBRModelHelper():
     def makePredictions(metric, state_code, year, month, day):
         
         input_pred = [[year, month, day]]
-        model_file = f"../model/gbr/modelfiles/temp/{metric}-{state_code}-model.sav"
+        model_file = f"../model/gbr/modelfiles/temp/model.sav"
         model_file_zip = f"../model/gbr/modelfiles/{metric}-{state_code}-model.sav.bz2"
         with bz2.open(model_file_zip, "rb") as fin:
             data = fin.read()
