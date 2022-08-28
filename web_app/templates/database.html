@@ -3,6 +3,7 @@
 	Solid State by HTML5 UP
 	html5up.net | @ajlkn
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+	
 -->
 <html>
 	<head>
@@ -11,6 +12,29 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="../static/css/main.css" />
 		<noscript><link rel="stylesheet" href="../static/css/noscript.css" /></noscript>
+
+		<!-- Bootstrap -->
+		<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/minty/bootstrap.min.css">
+		<link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css"> -->
+
+		<!-- JQuery -->
+		<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
+		<script src="../static/js/jquery.min.js"></script>
+		<script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+
+		<!-- JS -->
+		<script type="text/javascript" src="static/js/sql.js"></script>
+
+		<!-- <script type="text/javascript" src="static/js/logic.js"></script> -->
+
+			<!-- Scripts -->
+		<script src="../static/js/jquery.min.js"></script>
+		<script src="../static/js/jquery.scrollex.min.js"></script>
+		<script src="../static/js/browser.min.js"></script>
+		<script src="../static/js/breakpoints.min.js"></script>
+		<script src="../static/js/util.js"></script>
+		<script src="../static/js/main.js"></script>
+
 	</head>
 	<body class="is-preload">
 
@@ -53,105 +77,73 @@
 
 						<!-- Content -->
 							<div class="wrapper">
-								<div class="inner">
-									<p>Morbi mattis mi consectetur tortor elementum, varius pellentesque velit convallis. Aenean tincidunt lectus auctor mauris maximus, ac scelerisque ipsum tempor. Duis vulputate ex et ex tincidunt, quis lacinia velit aliquet. Duis non efficitur nisi, id malesuada justo. Maecenas sagittis felis ac sagittis semper. Curabitur purus leo donec vel dolor at arcu tincidunt bibendum. Interdum et malesuada fames ac ante ipsum primis in faucibus. Fusce ut aliquet justo. Donec id neque ipsum. Integer eget ultricies odio. Nam vel ex a orci fringilla tincidunt. Aliquam eleifend ligula non velit accumsan cursus. Etiam ut gravida sapien.</p>
+								<div class="inner">	
 
-									<section>
-										<h3 class="major">Table</h3>
-										<h4>Default</h4>
-										<div class="table-wrapper">
-											<table>
-												<thead>
-													<tr>
-														<th>Name</th>
-														<th>Description</th>
-														<th>Price</th>
-													</tr>
-												</thead>
-												<tbody>
-													<tr>
-														<td>Item One</td>
-														<td>Ante turpis integer aliquet porttitor.</td>
-														<td>29.99</td>
-													</tr>
-													<tr>
-														<td>Item Two</td>
-														<td>Vis ac commodo adipiscing arcu aliquet.</td>
-														<td>19.99</td>
-													</tr>
-													<tr>
-														<td>Item Three</td>
-														<td> Morbi faucibus arcu accumsan lorem.</td>
-														<td>29.99</td>
-													</tr>
-													<tr>
-														<td>Item Four</td>
-														<td>Vitae integer tempus condimentum.</td>
-														<td>19.99</td>
-													</tr>
-													<tr>
-														<td>Item Five</td>
-														<td>Ante turpis integer aliquet porttitor.</td>
-														<td>29.99</td>
-													</tr>
-												</tbody>
-												<tfoot>
-													<tr>
-														<td colspan="2"></td>
-														<td>100.00</td>
-													</tr>
-												</tfoot>
-											</table>
-										</div>
 
-										<h4>Alternate</h4>
-										<div class="table-wrapper">
-											<table class="alt">
-												<thead>
-													<tr>
-														<th>Name</th>
-														<th>Description</th>
-														<th>Price</th>
-													</tr>
-												</thead>
-												<tbody>
-													<tr>
-														<td>Item One</td>
-														<td>Ante turpis integer aliquet porttitor.</td>
-														<td>29.99</td>
-													</tr>
-													<tr>
-														<td>Item Two</td>
-														<td>Vis ac commodo adipiscing arcu aliquet.</td>
-														<td>19.99</td>
-													</tr>
-													<tr>
-														<td>Item Three</td>
-														<td> Morbi faucibus arcu accumsan lorem.</td>
-														<td>29.99</td>
-													</tr>
-													<tr>
-														<td>Item Four</td>
-														<td>Vitae integer tempus condimentum.</td>
-														<td>19.99</td>
-													</tr>
-													<tr>
-														<td>Item Five</td>
-														<td>Ante turpis integer aliquet porttitor.</td>
-														<td>29.99</td>
-													</tr>
-												</tbody>
-												<tfoot>
-													<tr>
-														<td colspan="2"></td>
-														<td>100.00</td>
-													</tr>
-												</tfoot>
-											</table>
-										</div>
-									</section>
+												<!-- Form to build query -->
+												<div class="row aln-center">
+													<div class="form-group col-md-4">
+														<label class="col-form-label" for="metric">Metric</label>
+														<select id="metric">
+															<option value="TMAX">TMAX</option>
+															<option value="TMIN">TMIN</option>
+															<option value="PRCP">PRCP</option>
+															<option value="SNOW">SNOW</option>
+														</select>
+													</div>
+
+													<div class="form-group col-md-4">
+														<label class="col-form-label" for="state_code">State Code</label>
+														
+														<select id="state_code">
+														</select>
+													</div>
+
+													<div class="form-group col-md-4">
+														<label class="col-form-label" for="select_min_date">Start Date</label>
+														<input type="date" class="form-control" id="select_min_date">
+													</div>
+
+													<div class="form-group col-md-4">
+														<label class="col-form-label" for="select_max_date">End Date</label>
+														<input type="date" class="form-control" id="select_max_date">
+														
+													</div>
+
+													
+											</div>
+											<BR>
+
+												<!-- Button to send query -->
+											<div class="row aln-center">
+												<div class="col-md-12">
+													<button type="button" class="btn btn-primary" id="filter">Make Query</button>
+												</div>
 
 								</div>
+
+								<!-- The table is populated here -->
+								<hr style="color:lightgray; border-width: 3px;">
+								<div class="container-fluid">
+									<div>
+										<div class="col-md-12">
+											<table id="sql_table" class="table alt">
+												<thead>
+													<tr>
+														<th>State</th>
+														<th>Date</th>
+														<th>Value</th>
+													</tr>
+												</thead>
+												<tbody></tbody>
+											</table>
+										</div>
+									</div>
+								</div>
+								<hr style="color:lightgray; border-width: 3px;">
+
+
+							</div>
 							</div>
 
 					</section>
@@ -167,13 +159,6 @@
 
 			</div>
 
-		<!-- Scripts -->
-			<script src="../static/js/jquery.min.js"></script>
-			<script src="../static/js/jquery.scrollex.min.js"></script>
-			<script src="../static/js/browser.min.js"></script>
-			<script src="../static/js/breakpoints.min.js"></script>
-			<script src="../static/js/util.js"></script>
-			<script src="../static/js/main.js"></script>
 
 	</body>
 </html>
