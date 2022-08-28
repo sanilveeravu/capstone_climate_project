@@ -5,7 +5,7 @@ import pickle
 import numpy as np
 from sklearn.preprocessing import StandardScaler
 from sklearn.ensemble import GradientBoostingRegressor
-
+import bz2
 
 class GBRModelHelper():
 
@@ -15,8 +15,14 @@ class GBRModelHelper():
     def makePredictions(metric, state_code, year, month, day):
         
         input_pred = [[year, month, day]]
-
-        model_file = f"../model/gbr/modelfiles/{metric}-{state_code}-model.sav"
+        model_file = f"../model/gbr/modelfiles/temp/model.sav"
+        model_file_zip = f"../model/gbr/modelfiles/{metric}-{state_code}-model.sav.bz2"
+        with bz2.open(model_file_zip, "rb") as fin:
+            data = fin.read()
+            f = open(model_file, "wb")
+            f.write(data)
+            f.close()
+            
         model = pickle.load(open(model_file, "rb"))
         
         sc = StandardScaler()
