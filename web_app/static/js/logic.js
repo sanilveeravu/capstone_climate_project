@@ -81,6 +81,8 @@ function makePredictions() {
 
             predicted_value = returnedData["prediction"]
             actual_value = returnedData["actual"]
+            graph_data = returnedData["graph_data"]
+            makeGraph(graph_data)
 
             $("#output").text("Actual: " + actual_value + "     ,     Predicted: " + predicted_value)
 
@@ -91,4 +93,35 @@ function makePredictions() {
         }
     });
 
+}
+
+function makeGraph(inp_data) {
+    var trace1 = {
+        x: inp_data.map(x => x.date),
+        y: inp_data.map(x => x.actual),
+        type: 'line',
+        marker: {
+            "color": "seagreen"
+        },
+        name: "Actual"
+    };
+
+    var trace2 = {
+        x: inp_data.map(x => x.date),
+        y: inp_data.map(x => x.predicted),
+        type: 'line',
+        marker: {
+            "color": "firebrick"
+        },
+        name: "Predicted"
+    };
+
+    var data = [trace1, trace2];
+    var layout = {
+        title: 'Predicted vs Actual',
+        xaxis: { "title": "Date" },
+        yaxis: { "title": "Metric Value" }
+    };
+
+    Plotly.newPlot('linegraph', data, layout);
 }
