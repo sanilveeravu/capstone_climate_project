@@ -1,0 +1,171 @@
+<!DOCTYPE HTML>
+<!--
+	Solid State by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+
+
+
+	<head>
+		<meta charset="utf-8">
+		<title>Machine Learning</title>
+		<!-- Boostrap -->
+		<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/minty/bootstrap.min.css"> -->
+		<!-- Our CSS -->
+		<!-- <link rel="stylesheet" type="text/css" href="static/css/style.css"> -->
+		<!-- JQuery -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<!-- PLOTLY -->
+		<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+		<!-- JS -->
+		<script type="text/javascript" src="static/js/logic.js"></script>
+
+
+
+
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="../static/css/main.css" />
+		<noscript><link rel="stylesheet" href="../static/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Page Wrapper -->
+			<div id="page-wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<h1><a href="/">The Heat Map</a></h1>
+						<nav>
+							<a href="#menu">Menu</a>
+						</nav>
+					</header>
+
+				<!-- Menu -->
+					<nav id="menu">
+						<div class="inner">
+							<h2>Menu</h2>
+							<ul class="links">
+								<li><a href="/">Home</a></li>
+								<li><a href="about_thm">About The Project</a></li>
+								<li><a href="database">Database</a></li>
+								<li><a href="machine_learning">Machine Learning</a></li>
+								<li><a href="dashboard_one">Dashboard #1</a></li>
+								<li><a href="dashboard_two">Dashboard #2</a></li>
+								<li><a href="about_us">About us</a></li>
+							</ul>
+							<a href="#" class="close">Close</a>
+						</div>
+					</nav>
+
+				<!-- Wrapper -->
+					<section id="wrapper">
+						<header>
+							<div class="inner">
+								<h2>Machine Learning</h2>
+								<p>REVIEW HISTORIC CLIMATE DATA AND PREDICT THE FUTURE.</p>
+							</div>
+						</header>
+
+						<!-- Content -->
+							<div class="wrapper">
+
+								<!-- <div class="container"> -->
+								<div class="inner">	
+									<!-- <div class="card border-primary mb-12" style="max-width: 20rem;">
+										<div class="card-header">Filters</div>
+										<div class="card-body"> -->
+											<div class="row aln-center">
+												<!-- <div class="col-md-12"> -->
+													<div class="form-group col-md-4">
+														<label class="col-form-label" for="metric">Metric</label>
+														<select id="metric">
+															<option value="TMAX">TMAX</option>
+															<option value="TMIN">TMIN</option>
+															<option value="PRCP">PRCP</option>
+															<option value="SNOW">SNOW</option>
+														</select>
+													</div>
+
+													<div class="form-group col-md-4">
+														<label class="col-form-label" for="state_code">State Code</label>
+														<select id="state_code">
+														</select>
+													</div>
+
+													<div class="form-group col-md-4">
+														<label class="col-form-label" for="select_date">Date</label>
+														<input type="date" class="form-control" id="select_date">
+													</div>
+
+													<!-- <div class="form-group">
+														<label class="col-form-label" for="year">Year</label>
+														<input type="text" class="form-control" value="2022" id="year">
+													</div>
+													
+													<div class="form-group">
+														<label class="col-form-label" for="month">Month</label>
+														<input type="text" class="form-control" value="7" id="month">
+													</div>
+
+													<div class="form-group">
+														<label class="col-form-label" for="day">Day</label>
+														<input type="text" class="form-control" value="1" id="day">
+													</div> -->
+
+											</div>
+											<BR>
+											<div class="row aln-center">
+												<div class="col-md-12">
+													<button type="button" class="btn btn-primary" id="filter">Make Prediction!</button>
+												</div>
+											<!-- </div>
+										</div>
+									</div> -->
+								</div>
+								<hr style="color:lightgray; border-width: 3px;">
+								<div class="container-fluid">
+									<div class="row aln-center">
+										<div class="col-md-12">
+											<h1 id="output"></h1>
+										</div>
+									</div>
+								</div>
+								<hr style="color:lightgray; border-width: 3px;">
+									<!-- Graph Here -->
+
+									<div class="container-fluid">
+										<div class="row aln-center">
+											<div class="col-md-12">
+												<div id="linegraph"></div>
+											</div>
+										</div>
+									</div>
+								</div>
+
+							</div>
+
+					</section>
+
+				<!-- Footer -->
+					<section id="footer">
+						<div class="inner">
+							<ul class="copyright">
+								<li>&copy; Untitled Inc. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+							</ul>
+						</div>
+					</section>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="../static/js/jquery.min.js"></script>
+			<script src="../static/js/jquery.scrollex.min.js"></script>
+			<script src="../static/js/browser.min.js"></script>
+			<script src="../static/js/breakpoints.min.js"></script>
+			<script src="../static/js/util.js"></script>
+			<script src="../static/js/main.js"></script>
+
+	</body>
+</html>

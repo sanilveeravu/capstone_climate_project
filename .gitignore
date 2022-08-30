@@ -127,3 +127,7 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+.DS_Store
+
+# temp model files
+model/gbr/modelfiles/temp/

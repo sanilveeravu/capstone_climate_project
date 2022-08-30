@@ -1,0 +1,51 @@
+station_data
+-
+station_id varchar pk fk >- stations.station_id
+date date pk
+metric varchar
+value float
+measurement_flag varchar
+quality_flag varchar
+source_flag varchar 
+observation_time int 
+
+stations
+-
+station_id varchar pk
+latitude float
+Longitude flaot
+elevation float
+state_code varchar FK >- states.state_code
+station_name varchar
+
+states
+-
+state_code varchar pk
+state_name varchar
+latitude float
+longitude float
+
+tmax_daily/monthly/yearly
+-
+state_code varchar pk fk >- states.state_code
+date date pk
+value float
+
+tmin_daily/monthly/yearly
+-
+state_code varchar pk fk >- states.state_code
+date date pk
+value float
+
+prcp_daily/monthly/yearly
+-
+state_code varchar pk fk >- states.state_code
+date date pk
+value float
+
+snow_daily/monthly/yearly
+-
+state_code varchar pk fk >- states.state_code
+date date pk
+value float
+
