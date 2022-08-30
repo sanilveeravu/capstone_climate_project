@@ -58,7 +58,7 @@ Now selecting just the required states and country based on station id name, dat
 
 Below is the ERD of tables used for our research.
 
-![EDG_image](database/ERD_image.PNG)
+![ERD_image](database/ERD_image.png)
 
 The data was loaded to a sqllite DB using SQLAlchemy.
 
