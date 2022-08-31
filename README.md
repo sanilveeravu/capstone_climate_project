@@ -90,8 +90,10 @@ After data collection once the trends were put up there was a clear indication o
 
 6. Below shows the trends of rain and snow over the last 120 years.
 ![rainsnowtrend](Resources/rainsnowtrend.png)
+
 Links: 
 Dashboard 1: https://public.tableau.com/views/FinalProject7_16613026204870/Dashboard1?:language=en-US&:display_count=n&:origin=viz_share_link
+
 Dashboard 2: https://public.tableau.com/views/FinalProject7_2/Dashboard2?:language=en-US&:display_count=n&:origin=viz_share_link
 
 ### Machine Learning
