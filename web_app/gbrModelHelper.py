@@ -13,7 +13,7 @@ class GBRModelHelper():
     def __init__(self):
         pass
 
-    def makePredictions(metric, state_code, year, month, day):
+    def makePredictions(metric, state_code, year, month, day, scale):
         
         input_pred = [[year, month, day]]
         model_file = f"../model/gbr/modelfiles/temp/model.sav"
@@ -64,13 +64,20 @@ class GBRModelHelper():
         print('Actual: %s' % actual_value)
         print('Prediction: %d' % prediction_result[0])
 
-        act_pred = [actual_value,round(prediction_result[0],1)]
+
+        predicted_value=round(prediction_result[0],1)
+        if(scale == "fahrenheit"):
+            if actual_value != "NA":
+                actual_value=round((actual_value*1.8)+32,1)
+            predicted_value=round((predicted_value*1.8)+32,1)
+
+        act_pred = [actual_value,predicted_value]
 
         print(act_pred)
 
         return act_pred
 
-    def makePredictionsByYear(metric, state_code, year):
+    def makePredictionsByYear(metric, state_code, year, scale):
                 
         model_file = f"../model/gbr/modelfiles/temp/model.sav"
         model_file_zip = f"../model/gbr/modelfiles/{metric}-{state_code}-model.sav.bz2"
@@ -130,6 +137,9 @@ class GBRModelHelper():
 
         final_df.drop(["state_code","year","month","year","day"],inplace=True,axis=1)
         final_df.rename({"value":"actual"},axis=1,inplace=True)
+        if(scale == "fahrenheit"):
+            final_df["actual"]=round((final_df["actual"]*1.8)+32,2)
+            final_df["predicted"]=round((final_df["predicted"]*1.8)+32,2)
         final_df
 
         return final_df       

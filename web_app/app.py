@@ -17,6 +17,11 @@ def home():
     # Return template and data
     return render_template("index.html")
 
+@app.route("/works_cited")
+def works_cited():
+    # Return template and data
+    return render_template("works_cited.html")
+
 @app.route("/about_us")
 def about_us():
     # Return template and data
@@ -64,9 +69,10 @@ def makePredictions():
     year = int(content["year"])
     month = int(content["month"])
     day = int(content["day"])
+    scale = str(content["scale"])
 
-    act_pred = GBRModelHelper.makePredictions(metric, state_code, year, month, day)
-    yearly_df = GBRModelHelper.makePredictionsByYear(metric, state_code, year)
+    act_pred = GBRModelHelper.makePredictions(metric, state_code, year, month, day,scale)
+    yearly_df = GBRModelHelper.makePredictionsByYear(metric, state_code, year, scale)
     graph_data = json.loads(yearly_df.to_json(orient="records"))
     actual = act_pred[0]
     preds = act_pred[1]
