@@ -92,6 +92,7 @@ After data collection once the trends were put up there was a clear indication o
 ![rainsnowtrend](Resources/rainsnowtrend.png)
 
 Links: 
+
 Dashboard 1: https://public.tableau.com/views/FinalProject7_16613026204870/Dashboard1?:language=en-US&:display_count=n&:origin=viz_share_link
 
 Dashboard 2: https://public.tableau.com/views/FinalProject7_2/Dashboard2?:language=en-US&:display_count=n&:origin=viz_share_link
