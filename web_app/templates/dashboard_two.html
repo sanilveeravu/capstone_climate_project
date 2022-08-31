@@ -46,8 +46,8 @@
 								<li><a href="about_thm">About The Project</a></li>
 								<li><a href="database">Database</a></li>
 								<li><a href="machine_learning">Machine Learning</a></li>
-								<li><a href="dashboard_one">Dashboard #1</a></li>
-								<li><a href="dashboard_two">Dashboard #2</a></li>
+								<li><a href="dashboard_one">Heat Dashboard</a></li>
+								<li><a href="dashboard_two">Climate Trend Dashboard</a></li>
 								<li><a href="works_cited">Works Cited</a></li>
 								<li><a href="about_us">About us</a></li>
 							</ul>
@@ -64,11 +64,15 @@
 						</header>
 
 						<!-- Content -->
-							<div class="wrapper">
+							<div class="row aln-center">
 								<div class="inner" style="width:1365px">
-									<hr>
+
+									<!-- The div where we will inject our Tableau -->
+									<div id="tableauParent" class="container-fluid">
+										<div style="height:900px" id="tableauViz"></div>
+									</div>
+
 									<div class="card container-fluid" style="margin-top:25px; margin-bottom: 25px; text-align: center;">
-										<h3>Toolbar</h3>
 										<div style="display: inline-block;">
 											<button type="button" class="btn btn-primary" id="pdf">PDF</button>
 											<button type="button" class="btn btn-primary" id="image">Image</button>
@@ -78,10 +82,7 @@
 										</div>
 									</div>
 								
-									<!-- The div where we will inject our Tableau -->
-									<div id="tableauParent" class="container-fluid">
-										<div style="height:900px" id="tableauViz"></div>
-									</div>
+									
 								</div>
 							</div>
 
