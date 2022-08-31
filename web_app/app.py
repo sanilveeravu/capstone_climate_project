@@ -113,8 +113,30 @@ def get_sql():
     df = sqlHelper.getDataFromDatabase(metric, state_code, min_date, max_date)
     return(jsonify(json.loads(df.to_json(orient="records"))))
 
+@app.route("/getSQLGraph", methods=["POST"])
+def getSQLGraph():
+    content = request.json["data"]
+    print(content)
+    
+    # parse
+    metric = content["metric"]
+    state_code = content["state_code"]
+    min_date = content["min_date"]
+    max_date = content["max_date"]
+    scale = str(content["scale"])
+
+    df = sqlHelper.getDataFromDatabase(metric, state_code, min_date, max_date)
+
+    if(scale=="fahrenheit"):
+        df["value"]=round((df["value"]*1.8)+32,1)
+
+    return(jsonify(json.loads(df.to_json(orient="records"))))
 
 
+@app.route("/database_graph")
+def database_graph():
+    # Return template and data
+    return render_template("database_graph.html")
 
 #############################################################
 
