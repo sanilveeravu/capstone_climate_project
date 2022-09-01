@@ -68,6 +68,11 @@ Below is the sample view of the database query page:
 
 ![database](Resources/database.png)
 
+A webpage was build to compare different metrics using plotly. The user can choose the required metric and timeline to see the comparison. Sample image:
+
+![databasegraph](Resources/databasegraph.png)
+
+
 ### Visualizations
 
 After data collection once the trends were put up there was a clear indication of how climate is changing all over US.
