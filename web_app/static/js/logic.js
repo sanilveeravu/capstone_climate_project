@@ -113,7 +113,7 @@ function makeGraph(inp_data) {
         y: inp_data.map(x => x.actual),
         type: 'line',
         marker: {
-            "color": "lightsteelblue"
+            "color": "steelblue"
         },
         name: "Actual"
     };
