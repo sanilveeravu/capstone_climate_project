@@ -174,8 +174,8 @@ function makeGraph(inp_data,metric,metric_2,state_code) {
 
     var data = [trace1, trace2];
     var layout = {
-        width: 1500,
-        height: 600,
+        width: 1250,
+        height: 500,
         margin: {
           l: 50,
           r: 50,
