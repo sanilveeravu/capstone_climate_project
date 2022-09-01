@@ -50,6 +50,7 @@ function getSQLGraph() {
     
     // Retrieve and format all four metrics
     var metric = $("#metric").val();
+    var metric_2 = $("#metric_2").val();
     var state_code =  $("#state_code").val();
     var scale = $("#scale").val();
 
@@ -62,6 +63,8 @@ function getSQLGraph() {
 
 
     console.log("metric:"+metric)
+    console.log("metric_2:"+metric_2)
+
     console.log("state_code"+state_code)
     console.log("min_date: "+min_date)
     console.log("max_date: "+max_date)
@@ -70,6 +73,7 @@ function getSQLGraph() {
     // Create the payload
     var payload = {
         "metric": metric,
+        "metric_2": metric_2,
         "state_code": state_code,
         "min_date": min_date,
         "max_date": max_date,
@@ -85,7 +89,7 @@ function getSQLGraph() {
         success: function(returnedData) {
             // print it
             console.log(returnedData);
-            makeGraph(returnedData,metric,state_code);
+            makeGraph(returnedData,metric,metric_2,state_code);
             // metric = ""
             
 
@@ -98,15 +102,62 @@ function getSQLGraph() {
 
 }
 
-function makeGraph(inp_data,metric,state_code) {
+function makeGraph(inp_data,metric,metric_2,state_code) {
+
+    if (metric == "TMAX"){
+        dynamic_title = "Temperature Max"
+        color = "firebrick"
+    }
+    else if (metric == "TMIN"){
+        dynamic_title = "Temperature Min"
+        color = "darkslateblue"
+    }
+    else if (metric == "PRCP"){
+        dynamic_title = "Precipitation"
+        color = "steelblue"
+    } 
+    else if (metric == "SNOW"){
+        dynamic_title = "Snowfall"
+        color = "lightblue"
+    }
+
+
+    if (metric_2 == "TMAX"){
+        dynamic_title_2 = "Temperature Max"
+        color_2 = "firebrick"
+    }
+    else if (metric_2 == "TMIN"){
+        dynamic_title_2 = "Temperature Min"
+        color_2 = "darkslateblue"
+    }
+    else if (metric_2 == "PRCP"){
+        dynamic_title_2 = "Precipitation"
+        color_2 = "steelblue"
+    } 
+    else if (metric_2 == "SNOW"){
+        dynamic_title_2 = "Snowfall"
+        color_2 = "lightblue"
+    }
+
     var trace1 = {
         x: inp_data.map(x => x.date),
-        y: inp_data.map(x => x.value),
+        y: inp_data.map(x => x.value_x),
         type: 'line',
         marker: {
-            "color": "steelblue"
+            "color": color
         },
-        name: "Actual"
+        name: metric
+    };
+
+    var trace2 = {
+        x: inp_data.map(x => x.date),
+        y: inp_data.map(x => x.value_y),
+        type: 'line',
+        yaxis: 'y2',
+        marker: {
+            "color": color_2
+        },
+        name: metric_2
     };
 
     // var trace2 = {
@@ -120,24 +171,28 @@ function makeGraph(inp_data,metric,state_code) {
     // };
 
 
-    if (metric == "TMAX"){
-        dynamic_title = "Temperature Max"
-    }
-    else if (metric == "TMIN"){
-        dynamic_title = "Temperature Min"
-    }
-    else if (metric == "PRCP"){
-        dynamic_title = "Precipitation"
-    } 
-    else if (metric == "SNOW"){
-        dynamic_title = "Snowfall"
-    }
 
-    var data = [trace1];
+    var data = [trace1, trace2];
     var layout = {
-        title: dynamic_title,
+        width: 1500,
+        height: 600,
+        margin: {
+          l: 50,
+          r: 50,
+          b: 100,
+          t: 100,
+          pad: 4
+        },
+        title: dynamic_title + " vs " + dynamic_title_2,
         xaxis: { "title": "Date" },
-        yaxis: { "title": metric }
+        yaxis: { "title": dynamic_title },
+        yaxis2: {
+            title: dynamic_title_2,
+            // titlefont: {color: 'rgb(148, 103, 189)'},
+            // tickfont: {color: 'rgb(148, 103, 189)'},
+            overlaying: 'y',
+            side: 'right'
+          }
     };
 
     Plotly.newPlot('linegraph', data, layout);

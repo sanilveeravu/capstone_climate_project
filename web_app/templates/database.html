@@ -54,9 +54,10 @@
 								<li><a href="/">Home</a></li>
 								<li><a href="about_thm">About The Project</a></li>
 								<li><a href="database">Database</a></li>
+								<li><a href="database_graph">Database Graph</a></li>
 								<li><a href="machine_learning">Machine Learning</a></li>
-								<li><a href="dashboard_one">Dashboard #1</a></li>
-								<li><a href="dashboard_two">Dashboard #2</a></li>
+								<li><a href="dashboard_one">Heat Dashboard</a></li>
+								<li><a href="dashboard_two">Climate Trend Dashboard</a></li>
 								<li><a href="works_cited">Works Cited</a></li>
 								<li><a href="about_us">About us</a></li>
 							</ul>
@@ -69,13 +70,22 @@
 						<header>
 							<div class="inner">
 								<h2>The Database</h2>
-								<p>QUERY YEARLY DATA OF DIFFERENT METRICS OVER THE LAST HUNDRED YEARS FOR ANY STATE IN US.</p>
+								<p>QUERY A CENTURY OF YEARLY DATA ACROSS DIFFERENT METRICS FOR ANY STATE IN US.</p>
 							</div>
 						</header>
 
 						<!-- Content -->
-							<div class="wrapper">
+							<div class="row aln-center">
 								<div class="inner">	
+									<p>Make custom queries to our Sqlite database by choosing the desired parameters and clicking "Make Query". To read about the story behind the database and it's ERD <a href="about_thm">click here</a></p>
+									<h4>Metric Values</h4>
+												<ul>
+													<li>TMAX - Max Temperature</li>
+													<li>TMIN - Min Temperature</li>
+													<li>PRCP - Total Precipitation</li>
+													<li>SNOW - Total Snowfall</li>
+												</ul>
+
 												<!-- Form to build query -->
 												<div class="row aln-center">
 													<div class="form-group col-md-4">
@@ -104,6 +114,13 @@
 														<label class="col-form-label" for="select_max_date">End Date</label>
 														<input type="date" class="form-control" id="select_max_date">
 														
+													</div>
+													<div class="form-group col-md-4">
+														<label class="col-form-label" for="scale">Scale</label>
+														<select id="scale">
+															<option value="celsius">&#176;C</option>
+															<option value="fahrenheit">&#176;F</option>
+														</select>
 													</div>
 
 													
