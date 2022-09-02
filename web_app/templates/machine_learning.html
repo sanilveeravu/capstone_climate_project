@@ -22,6 +22,9 @@
 		<!-- JS -->
 		<script type="text/javascript" src="static/js/logic.js"></script>
 
+		<!-- favicon -->
+		<link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+
 
 
 
@@ -50,9 +53,11 @@
 								<li><a href="/">Home</a></li>
 								<li><a href="about_thm">About The Project</a></li>
 								<li><a href="database">Database</a></li>
+								<li><a href="database_graph">Database Graph</a></li>
 								<li><a href="machine_learning">Machine Learning</a></li>
-								<li><a href="dashboard_one">Dashboard #1</a></li>
-								<li><a href="dashboard_two">Dashboard #2</a></li>
+								<li><a href="dashboard_one">Heat Dashboard</a></li>
+								<li><a href="dashboard_two">Climate Trend Dashboard</a></li>
+								<li><a href="works_cited">Works Cited</a></li>
 								<li><a href="about_us">About us</a></li>
 							</ul>
 							<a href="#" class="close">Close</a>
@@ -69,10 +74,22 @@
 						</header>
 
 						<!-- Content -->
-							<div class="wrapper">
+							<!-- <div class="wrapper"> -->
+							<div class="row aln-center">
 
 								<!-- <div class="container"> -->
 								<div class="inner">	
+
+									<p>Make a custom machine learning prediction by choosing the desired parameters and clicking "Make Prediction". 
+										<br>To read about the machine learning algorithm <a href="about_thm">click here</a></p>
+									<h4>Metric Values</h4>
+												<ul>
+													<li>TMAX - Max Temperature</li>
+													<li>TMIN - Min Temperature</li>
+													<li>PRCP - Total Precipitation</li>
+													<li>SNOW - Total Snowfall</li>
+												</ul>
+
 									<!-- <div class="card border-primary mb-12" style="max-width: 20rem;">
 										<div class="card-header">Filters</div>
 										<div class="card-body"> -->
@@ -97,6 +114,14 @@
 													<div class="form-group col-md-4">
 														<label class="col-form-label" for="select_date">Date</label>
 														<input type="date" class="form-control" id="select_date">
+													</div>
+
+													<div class="form-group col-md-4">
+														<label class="col-form-label" for="scale">Scale</label>
+														<select id="scale">
+															<option value="celsius">&#176;C</option>
+															<option value="fahrenheit">&#176;F</option>
+														</select>
 													</div>
 
 													<!-- <div class="form-group">

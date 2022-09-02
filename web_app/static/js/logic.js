@@ -35,11 +35,15 @@ $(document).ready(function() {
     });
 });
 
+function convertToFahrenheit(temp){
+    return Math.round(((temp * 1.8) + 32) * 10) / 10
+}
 
 // call Flask API endpoint
 function makePredictions() {
     var metric = $("#metric").val();
     var state_code = $("#state_code").val();
+    var scale = $("#scale").val();
     
     var date = new Date($('#select_date').val());
     var day = date.getUTCDate();
@@ -55,6 +59,7 @@ function makePredictions() {
     console.log("year"+year)
     console.log("month"+month)
     console.log("day"+day)
+    console.log("scale:"+scale)
 
     // check if inputs are valid
 
@@ -64,7 +69,8 @@ function makePredictions() {
         "state_code": state_code,
         "year": year,
         "month": month,
-        "day": day
+        "day": day,
+        "scale": scale
     }
 
 
@@ -82,7 +88,13 @@ function makePredictions() {
             predicted_value = returnedData["prediction"]
             actual_value = returnedData["actual"]
             graph_data = returnedData["graph_data"]
+            // if (scale === "fahrenheit") {
+            //     actual_value=convertToFahrenheit(actual_value)
+            //     predicted_value=convertToFahrenheit(predicted_value)
+
+            // }  
             makeGraph(graph_data)
+
 
             $("#output").text("Actual: " + actual_value + "     ,     Predicted: " + predicted_value)
 
@@ -101,7 +113,7 @@ function makeGraph(inp_data) {
         y: inp_data.map(x => x.actual),
         type: 'line',
         marker: {
-            "color": "seagreen"
+            "color": "steelblue"
         },
         name: "Actual"
     };

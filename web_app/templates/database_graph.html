@@ -1,0 +1,192 @@
+<!DOCTYPE HTML>
+<!--
+	Solid State by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+	
+-->
+<html>
+	<head>
+		<title>The Database</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="../static/css/main.css" />
+		<noscript><link rel="stylesheet" href="../static/css/noscript.css" /></noscript>
+
+		<!-- Bootstrap -->
+		<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/minty/bootstrap.min.css">
+		<link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css"> -->
+
+		<!-- JQuery -->
+		<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
+		<script src="../static/js/jquery.min.js"></script>
+		<!-- <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script> -->
+
+		<!-- JS -->
+		<script type="text/javascript" src="static/js/sql_graph.js"></script>
+
+		<!-- <script type="text/javascript" src="static/js/logic.js"></script> -->
+		<!-- PLOTLY -->
+		<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+		<!-- favicon -->
+		<link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+
+
+
+	</head>
+	<body class="is-preload">
+
+		<!-- Page Wrapper -->
+			<div id="page-wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<h1><a href="/">The Heat Map</a></h1>
+						<nav>
+							<a href="#menu">Menu</a>
+						</nav>
+					</header>
+
+				<!-- Menu -->
+					<nav id="menu">
+						<div class="inner">
+							<h2>Menu</h2>
+							<ul class="links">
+								<li><a href="/">Home</a></li>
+								<li><a href="about_thm">About The Project</a></li>
+								<li><a href="database">Database</a></li>
+								<li><a href="database_graph">Database Graph</a></li>
+								<li><a href="machine_learning">Machine Learning</a></li>
+								<li><a href="dashboard_one">Heat Dashboard</a></li>
+								<li><a href="dashboard_two">Climate Trend Dashboard</a></li>
+								<li><a href="works_cited">Works Cited</a></li>
+								<li><a href="about_us">About us</a></li>
+							</ul>
+							<a href="#" class="close">Close</a>
+						</div>
+					</nav>
+
+				<!-- Wrapper -->
+					<section id="wrapper">
+						<header>
+							<div class="inner">
+								<h2>The Database Graph</h2>
+								<p>GRAPH A CENTURY OF YEARLY DATA ACROSS DIFFERENT METRICS FOR ANY STATE IN US.</p>
+							</div>
+						</header>
+
+						<!-- Content -->
+							<div class="row aln-center">
+								<div class="inner">	
+									<p>Make a custom line graph with our Sqlite database to compare two different metrics. Simply choose the desired parameters and click "Make Graph". 
+										<br>To read about the story behind the database and it's ERD <a href="about_thm">click here</a></p>
+									<h4>Metric Values</h4>
+												<ul>
+													<li>TMAX - Max Temperature</li>
+													<li>TMIN - Min Temperature</li>
+													<li>PRCP - Total Precipitation</li>
+													<li>SNOW - Total Snowfall</li>
+												</ul>
+												<!-- Form to build query -->
+												<div class="row aln-center">
+													<div class="form-group col-md-4">
+														<label class="col-form-label" for="metric">Metric 1</label>
+														<select id="metric">
+															<option value="TMAX">TMAX</option>
+															<option value="TMIN">TMIN</option>
+															<option value="PRCP">PRCP</option>
+															<option value="SNOW">SNOW</option>
+														</select>
+													</div>
+
+													<div class="form-group col-md-4">
+														<label class="col-form-label" for="metric_2">Metric 2</label>
+														<select id="metric_2">
+															<option value="TMAX">TMAX</option>
+															<option value="TMIN">TMIN</option>
+															<option value="PRCP">PRCP</option>
+															<option value="SNOW">SNOW</option>
+														</select>
+													</div>
+
+													<div class="form-group col-md-4">
+														<label class="col-form-label" for="state_code">State Code</label>
+														
+														<select id="state_code">
+														</select>
+													</div>
+
+													<div class="form-group col-md-4">
+														<label class="col-form-label" for="select_min_date">Start Date</label>
+														<input type="date" class="form-control" id="select_min_date">
+													</div>
+
+													<div class="form-group col-md-4">
+														<label class="col-form-label" for="select_max_date">End Date</label>
+														<input type="date" class="form-control" id="select_max_date">
+														
+													</div>
+
+													<div class="form-group col-md-4">
+														<label class="col-form-label" for="scale">Scale</label>
+														<select id="scale">
+															<option value="celsius">&#176;C</option>
+															<option value="fahrenheit">&#176;F</option>
+														</select>
+													</div>
+													
+											</div>
+											<BR>
+
+												<!-- Button to send query -->
+											<div class="row aln-center">
+												<div class="col-md-12">
+													<button type="button" class="btn btn-primary" id="filter">Make Graph</button>
+												</div>
+
+								</div>
+
+								<!-- The table is populated here -->
+								<hr style="color:lightgray; border-width: 3px;">
+								<div class="container-fluid">
+									<div>
+										<div class="col-md-12">
+											<!-- graph here -->
+											<div class="row aln-center">
+												<div class="col-md-12">
+													<div id="linegraph"></div>
+												</div>
+											</div>
+
+										</div>
+									</div>
+								</div>
+								<hr style="color:lightgray; border-width: 3px;">
+
+
+							</div>
+							</div>
+
+					</section>
+
+				<!-- Footer -->
+					<section id="footer">
+						<div class="inner">
+							<ul class="copyright">
+								<li>&copy; Untitled Inc. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+							</ul>
+						</div>
+					</section>
+
+			</div>
+
+		<!-- Scripts -->
+		<script src="../static/js/jquery.min.js"></script>
+		<script src="../static/js/jquery.scrollex.min.js"></script>
+		<script src="../static/js/browser.min.js"></script>
+		<script src="../static/js/breakpoints.min.js"></script>
+		<script src="../static/js/util.js"></script>
+		<script src="../static/js/main.js"></script>
+
+	</body>
+</html>

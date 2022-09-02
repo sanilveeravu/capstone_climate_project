@@ -17,6 +17,11 @@ def home():
     # Return template and data
     return render_template("index.html")
 
+@app.route("/works_cited")
+def works_cited():
+    # Return template and data
+    return render_template("works_cited.html")
+
 @app.route("/about_us")
 def about_us():
     # Return template and data
@@ -64,9 +69,10 @@ def makePredictions():
     year = int(content["year"])
     month = int(content["month"])
     day = int(content["day"])
+    scale = str(content["scale"])
 
-    act_pred = GBRModelHelper.makePredictions(metric, state_code, year, month, day)
-    yearly_df = GBRModelHelper.makePredictionsByYear(metric, state_code, year)
+    act_pred = GBRModelHelper.makePredictions(metric, state_code, year, month, day,scale)
+    yearly_df = GBRModelHelper.makePredictionsByYear(metric, state_code, year, scale)
     graph_data = json.loads(yearly_df.to_json(orient="records"))
     actual = act_pred[0]
     preds = act_pred[1]
@@ -107,8 +113,38 @@ def get_sql():
     df = sqlHelper.getDataFromDatabase(metric, state_code, min_date, max_date)
     return(jsonify(json.loads(df.to_json(orient="records"))))
 
+@app.route("/getSQLGraph", methods=["POST"])
+def getSQLGraph():
+    content = request.json["data"]
+    print(content)
+    
+    # parse
+    metric = content["metric"]
+    metric_2 = content["metric_2"]
+    state_code = content["state_code"]
+    min_date = content["min_date"]
+    max_date = content["max_date"]
+    scale = str(content["scale"])
+
+    df = sqlHelper.getDataFromDatabase(metric, state_code, min_date, max_date)
+    df_2 = sqlHelper.getDataFromDatabase(metric_2, state_code, min_date, max_date)
+
+    df_final = df.merge(df_2,on=["state_name","date"])
+
+    if scale=="fahrenheit" :
+        if metric in ["TMAX","TMIN"] : 
+            df_final["value_x"]=round((df_final["value_x"]*1.8)+32,1)
+        if metric_2 in ["TMAX","TMIN"] : 
+            df_final["value_y"]=round((df_final["value_y"]*1.8)+32,1)
 
 
+    return(jsonify(json.loads(df_final.to_json(orient="records"))))
+
+
+@app.route("/database_graph")
+def database_graph():
+    # Return template and data
+    return render_template("database_graph.html")
 
 #############################################################
 

@@ -9,7 +9,7 @@ $(document).ready(function() {
 
     var field = document.querySelector('#select_max_date');
     var curr_date = new Date();
-    field.value = curr_date.getFullYear().toString() + '-' + (curr_date.getMonth() - 1).toString().padStart(2, 0) +
+    field.value = (curr_date.getFullYear() - 1).toString() + '-' + (curr_date.getMonth() + 1).toString().padStart(2, 0) +
     '-' + curr_date.getDate().toString().padStart(2, 0);
 
     var select_state = document.getElementById("state_code");
@@ -50,6 +50,7 @@ function getSQL() {
     // Retrieve and format all four metrics
     var metric = $("#metric").val();
     var state_code =  $("#state_code").val();
+    var scale = $("#scale").val();
 
     function format_date(d) {
         return (d.getFullYear() + "-" + ("0"+(d.getMonth()+1)).slice(-2) + "-" + ("0" + d.getDate()).slice(-2));   
@@ -81,7 +82,7 @@ function getSQL() {
         success: function(returnedData) {
             // print it
             console.log(returnedData);
-            renderTable(returnedData);
+            renderTable(returnedData, scale);
             // metric = ""
             
 
@@ -94,7 +95,7 @@ function getSQL() {
 
 }
 
-function renderTable(inp_data) {
+function renderTable(inp_data, scale) {
     // init html string
     let html = "";
 
@@ -108,7 +109,13 @@ function renderTable(inp_data) {
         // loop through each cell (order matters)
         html += `<td>${row.state_name}</td>`;
         html += `<td>${row.date}</td>`;
-        html += `<td>${row.value}</td>`;
+
+        // Convert to F if selected
+        if (scale == "fahrenheit") {
+            html += `<td>${Math.round((row.value * 9 / 5 + 32)*100)/100}</td>`;
+        } else {
+            html += `<td>${Math.round((row.value)*100)/100}</td>`;
+        }
 
         // close the row
         html += "</tr>";
